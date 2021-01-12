@@ -3,7 +3,7 @@
 
 Light and simple Blog webapp.
 
-![F1](../../../../../../cs/KITM/BlogMVC/f1.png)
+![F1](https://github.com/darius038/BlogMVC/f1.png)
 
 ## Goals
 * An easy way to create a simple, secure website with a blog
