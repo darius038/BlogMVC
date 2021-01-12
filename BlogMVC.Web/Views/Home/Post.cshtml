@@ -1,0 +1,69 @@
+﻿@model Post
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.Description;
+    ViewBag.Keywords = $"{Model.Tags?.Replace(",", " ")}";
+    var base_path = Context.Request.PathBase;
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- post article-->
+<div class="container pb50">
+    <div class="row">
+        <div class="col-md-12 mb40 mt-5 postimg">
+            <article>
+                <div class="row">
+                    @if (!String.IsNullOrEmpty(Model.Image))
+                    {
+                        var image_path = $"{base_path}/Image/{Model.Image}";
+                        <img src="~/content/post/@Model.Image" alt="" class="mb30" />
+                    }
+                </div>
+              
+
+                <div class="post-content">
+                    <h3>@Model.Title</h3>
+                    <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-tags"></i> <a href="#">@ViewBag.Category</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar-o"></i> <a href="#">@Model.Created.ToString("d")</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-hashtag"></i> <a href="#">@Model.Tags</a>
+                        </li>
+                    </ul>
+                    <p class="lead">@Model.Description</p>
+                    @Html.Raw(Model.Body)
+                    <hr class="mb40">
+                    <!-- comment section-->
+                    <h4 class="mb40 text-uppercase font500">Comments</h4>
+
+                    @foreach (var coment in Model.Comments)
+                    {
+                        <div class="media mb40">
+                            <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
+                            <div class="media-body">
+                                <h5 class="mt-0 font400 clearfix">
+                                    @coment.CommentUserName
+                                </h5> @coment.Message
+                            </div>
+                        </div>
+                    }
+
+                    <hr class="mb40">
+                    <h4 class="mb40 text-uppercase font500">Post a comment</h4>
+                    <!-- comment form from partial view -->
+                    @{
+                        await Html.RenderPartialAsync("_Comment",
+                            new CommentViewModel { PostId = Model.Id, CommentUserName = @User.Identity.Name });
+                    }
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+

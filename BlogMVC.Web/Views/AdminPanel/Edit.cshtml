@@ -1,0 +1,76 @@
+﻿@model CategoryPostModel
+@{
+    ViewData["Title"] = "Edit Page";
+}
+
+<div class="container pb50">
+    <div class="row mt-5">
+        <div class="col mt-3">
+    
+            <form asp-controller="AdminPanel" asp-action="Edit" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input asp-for="Post.Id" type="hidden" />
+
+                        <div class="form-group">
+                            <label asp-for="Post.Title" class="control-label">Post title</label>
+                            <input asp-for="Post.Title" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Post.Description" class="control-label">Post description</label>
+                            <input asp-for="Post.Description" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Post.Tags" class="control-label">Tags</label>
+                            <input asp-for="Post.Tags" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Post.Category" class="control-label">Select category</label>
+                            <select asp-for="@Model.Post.CategoryId" class="form-control">
+
+                                @foreach (var item in Model.Categories)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Image" class="control-label">Select image</label>
+                            <input asp-for="Image" class="input-group bg-secondary t " />
+                            <input asp-for="CurrentImage" type="hidden" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <label asp-for="Post.Body" class="control-label">Create or edit post body</label>
+
+                            <textarea id="summernote" asp-for="Post.Body"></textarea>
+                        </div>
+
+                    </div>
+                </div>            
+               
+                <div class="form-group mt-3">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input  asp-action="Index" type="submit" value="Cancel" class="btn btn-secondary" />
+                </div>
+            </form>
+            </div>
+
+
+</div>
+    </div>
+
+        @section scripts {
+            <script src="~/lib/summernote/summernote-bs4.js"></script>
+            <script>
+                $('#summernote').summernote({
+                    placeholder: 'Hello Bootstrap 4',
+                    tabsize: 2,
+                    height: 100
+                });
+            </script>
+        }

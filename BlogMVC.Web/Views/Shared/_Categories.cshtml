@@ -1,0 +1,11 @@
+﻿@model CategoryPostModel
+
+<ul class="nav justify-content-center">
+    <li class="nav-item text-secondary ml-3 pt-2">Categories:</li>
+    @foreach (var item in Model.Categories)
+    {
+        <li class="nav-item">
+            <a href="/Home/Category/@item.Id" class="nav-link text-secondary font-weight-bold">@item.Name</a>
+        </li>
+    }
+</ul>

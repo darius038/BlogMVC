@@ -1,0 +1,30 @@
+﻿@model CommentViewModel
+
+<div class="row">
+    <div class="col-md-8">
+        <form method="post" asp-controller="Home" asp-action="Comment" role="form">
+            <input asp-for="PostId" type="hidden" />
+            <input asp-for="CommentUserName" type="hidden" />
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="form-group">
+                    <label>@User.Identity.Name :</label>
+                    <textarea asp-for="Message" class="form-control" rows="5" placeholder="Comment"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            }
+            else
+            {
+                <input asp-for="Message" placeholder="Please sign in to comment!" />
+
+                <div class="form-group">                   
+                    <textarea asp-for="Message" class="form-control" rows="5" placeholder="Please sign in to comment!"></textarea>
+                </div>
+                <button asp-action="Login" asp-controller="Account" type="submit" class="btn btn-primary">Sign in</button>
+                <a asp-action="Login" asp-controller="Account" class="btn btn-secondary">Sign in </a>
+            }
+        </form>
+    </div>
+    
+</div>

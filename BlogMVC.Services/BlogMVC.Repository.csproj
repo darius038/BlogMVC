@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlogMVC.Data\BlogMVC.Data.csproj" />
+    <ProjectReference Include="..\BlogMVC.Domains\BlogMVC.Domains.csproj" />
+  </ItemGroup>
+
+</Project>

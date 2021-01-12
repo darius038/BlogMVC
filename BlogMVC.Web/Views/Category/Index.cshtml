@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BlogMVC.Domains.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container pb50">
+    <div class="row mt-5">
+        <div class="col-md-2 mt-3">
+            <h5 class="mt-3">Admin panel</h5>
+            <hr />
+            <a asp-action="Create">Create New Category</a>
+            <hr />
+            <a asp-controller="AdminPanel" asp-action="Index">Back to Posts</a>
+        </div>
+        <div class="col-md-10 mt-3">
+            <h4 class="mt-3">Blog categories list</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Posts)
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @foreach (var post in item.Posts)
+                                {
+                                    <p>@Html.DisplayFor(modelItem => post.Title)</p>
+
+                                }
+
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
