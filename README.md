@@ -16,6 +16,7 @@ Light and simple Blog webapp.
 * Support of two types of users: blog admin/owner and simple user
 * Post commenting only for registered users
 * SQL database
+* EF Code First workflow
 * Organizing code in Clean Architecture
 * Application Core types (Entities, Iterfaces, Services, DTOs, UI)
 
@@ -31,7 +32,6 @@ TargetFramework: .netcoreapp3.1
 EntityFrameworkCore: 3.1.10
 
 ## Usage example
-
 To sign in as Admin:
 * user name: admin
 * password: admin
