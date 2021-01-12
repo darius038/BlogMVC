@@ -1,7 +1,5 @@
 # Personal Blog Webapp
-> Custom Blog webapp with simple CMS
-
-Light and simple Blog webapp.
+> Light and simple Blog webapp with simple CMS.
 
 ![F1](https://github.com/darius038/BlogMVC/blob/master/f1.png)
 
@@ -57,7 +55,7 @@ For posts comenting, you must be signed in to your account (as Admin or simple u
 
 
 ## Meta
-KITM .net student
+learning to code,
 Darius
 [https://github.com/darius038](https://github.com/darius038)
 
