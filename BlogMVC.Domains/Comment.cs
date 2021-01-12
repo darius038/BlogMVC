@@ -8,6 +8,5 @@ namespace BlogMVC.Domains
         public string Message { get; set; }
         public DateTime Created { get; set; }
         public string CommentUserName { get; set; }
-
     }
 }

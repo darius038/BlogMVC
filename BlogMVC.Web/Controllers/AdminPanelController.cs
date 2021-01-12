@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using AutoMapper;
 using BlogMVC.Web.ViewModels;
@@ -20,6 +17,7 @@ namespace BlogMVC.Web.Controllers
         private readonly IMapper _mapper;
         private IFileManager _fileManager;
         private ICategoryRepository _catrepository;
+
         public AdminPanelController(IPostRepository repository, IMapper mapper, 
             IFileManager fileManager, ICategoryRepository catrepository)
         {
@@ -39,8 +37,7 @@ namespace BlogMVC.Web.Controllers
         //GET: Edit/Create Post
         [HttpGet]
         public IActionResult Edit(int? id)
-        {
-      
+        {      
             var categories = _catrepository.GetAllCategories();
             if (id == null)
             {
@@ -48,15 +45,18 @@ namespace BlogMVC.Web.Controllers
             }
 
             var post = _repository.GetPost((int)id);
+
             return View(new CategoryPostModel
             {
-                Post = post,              
+                Post = post,
+                CurrentImage = post.Image,
                 Categories = categories
             });
         }
 
         //POST: Edit/Create Post
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(CategoryPostModel model)
         {
             if (!ModelState.IsValid)
@@ -85,6 +85,8 @@ namespace BlogMVC.Web.Controllers
             {
                 _repository.AddPost(post);
             }
+            
+            
             if (await _repository.SaveChangesAsync())
             {
                 return RedirectToAction("Index");
@@ -93,6 +95,7 @@ namespace BlogMVC.Web.Controllers
 
         }
 
+        //GET: Delete Post
         [HttpGet]
         public async Task<IActionResult> Remove(int id)
         {

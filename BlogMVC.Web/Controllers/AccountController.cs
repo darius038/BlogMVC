@@ -27,8 +27,14 @@ namespace BlogMVC.Web.Controllers
 
         //POST: Login
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var signInResult = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
             if (!signInResult.Succeeded)
@@ -57,6 +63,7 @@ namespace BlogMVC.Web.Controllers
 
         //POST: Register
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)

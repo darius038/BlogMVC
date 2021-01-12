@@ -1,10 +1,7 @@
 ﻿using BlogMVC.Data;
 using BlogMVC.Domains;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BlogMVC.Repository
@@ -17,11 +14,13 @@ namespace BlogMVC.Repository
             _context = context;
         }
 
+        // ADD new category
         public void AddCategory(Category category)
         {
             _context.Categories.Add(category);       
         }
 
+        // GET all categories
         public List<Category> GetAllCategories()
         {
             var cat = _context.Categories.ToList<Category>();
@@ -34,16 +33,19 @@ namespace BlogMVC.Repository
             return _context.Categories.ToList<Category>();
         }
 
+        // GET categorie by id
         public Category GetCategory(int id)
         {
             return _context.Categories.FirstOrDefault(i => i.Id == id);
         }
 
+        // GET remove categorie
         public void RemoveCategory(int id)
         {
             _context.Categories.Remove(_context.Categories.FirstOrDefault(i => i.Id == id));            
         }
 
+        // UPDATE categorie
         public void UpdateCategory(int id, Category category)
         {
             var temp = GetCategory(id);
@@ -51,6 +53,7 @@ namespace BlogMVC.Repository
             _context.Update(temp);
         }
 
+        // SAVE changes
         public async Task<bool> SaveChangesAsync()
         {
             if (await _context.SaveChangesAsync() > 0)
@@ -58,19 +61,6 @@ namespace BlogMVC.Repository
                 return true;
             }
             return false;
-        }
-
-        public bool hasPost(int id)
-        {
-           var item = GetCategory(id);
-
-            if (item.Posts == null)
-            {
-                return false;
-            }
-            return true;
-
-
-        }
+        }        
     }
 }

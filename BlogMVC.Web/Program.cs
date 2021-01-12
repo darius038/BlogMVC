@@ -1,14 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BlogMVC.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+
 
 namespace BlogMVC.Web
 {
@@ -20,7 +17,8 @@ namespace BlogMVC.Web
             // Creating App host
             var appHost = CreateHostBuilder(args).Build();
 
-            // Seeding database with Application admin user data
+            // Seeding database with Application admin user data only -- change before publish
+            // TODO: Change ADMIN data before publish
             try
             {
                 var scope = appHost.Services.CreateScope();

@@ -16,12 +16,10 @@
             }
             else
             {
-                <input asp-for="Message" placeholder="Please sign in to comment!" />
-
+                <p>Please sign in to comment!</p>
                 <div class="form-group">                   
                     <textarea asp-for="Message" class="form-control" rows="5" placeholder="Please sign in to comment!"></textarea>
-                </div>
-                <button asp-action="Login" asp-controller="Account" type="submit" class="btn btn-primary">Sign in</button>
+                </div>                
                 <a asp-action="Login" asp-controller="Account" class="btn btn-secondary">Sign in </a>
             }
         </form>

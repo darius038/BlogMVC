@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BlogMVC.Domains;
@@ -66,6 +65,7 @@ namespace BlogMVC.Web.Controllers
 
         //POST: Comment
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Comment(CommentViewModel model)
         {
             if (!ModelState.IsValid)
@@ -87,14 +87,6 @@ namespace BlogMVC.Web.Controllers
             await _repository.SaveChangesAsync();
 
             return RedirectToAction("Post", new { id = model.PostId });
-        }
-
-        public IActionResult Example(int id)
-        {
-            var post = _repository.GetPost(id);
-            var category = _catrepository.GetCategory((int)post.CategoryId);
-            ViewBag.Category = category.Name;
-            return View(post);
         }
 
 

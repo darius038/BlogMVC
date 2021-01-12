@@ -1,7 +1,6 @@
 ﻿using BlogMVC.Domains;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace BlogMVC.Data
 {

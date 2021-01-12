@@ -13,8 +13,7 @@ namespace BlogMVC.Repository
         List<Category> GetAllCategories();
         void RemoveCategory(int id);
         void UpdateCategory(int id, Category category);
-        Task<bool> SaveChangesAsync();
-        bool hasPost(int id);
+        Task<bool> SaveChangesAsync();       
 
     }
 }

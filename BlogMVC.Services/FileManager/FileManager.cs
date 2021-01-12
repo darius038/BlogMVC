@@ -50,7 +50,7 @@ namespace BlogMVC.Repository.FileManager
                     Directory.CreateDirectory(imagePath);
                 }
 
-                //Specifying new image file name
+                //Creating new image file name
                 var fileType = image.FileName.Substring(image.FileName.LastIndexOf('.'));
                 var fileName = $"img_{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}{fileType}";
 
@@ -66,19 +66,7 @@ namespace BlogMVC.Repository.FileManager
             {
                 Console.WriteLine(e.Message);
                 return "Image save Error";
-            }
-
-            
+            }            
         }
-
-        //private ProcessImageSettings ImageOptions() => new ProcessImageSettings
-        //{
-        //    Width = 800,
-        //    Height = 500,
-        //    ResizeMode = CropScaleMode.Crop,
-        //    SaveFormat = FileFormat.Jpeg,
-        //    JpegQuality = 100,
-        //    JpegSubsampleMode = ChromaSubsampleMode.Subsample420
-        //};
     }
 }

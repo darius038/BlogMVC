@@ -26,12 +26,14 @@ namespace BlogMVC.Web
         {
             
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDbContext<AppDbContext>(opts =>opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
+          
             services.AddTransient<IPostRepository, PostRepository>();
+
             services.AddTransient<ICategoryRepository, CategoryRepository>();
 
             services.AddTransient<IFileManager, FileManager>();
 
+            // TODO: Change before publish
             services.AddIdentity<IdentityUser, IdentityRole>(opt =>
             {
                 opt.Password.RequiredLength = 5;
@@ -49,8 +51,6 @@ namespace BlogMVC.Web
             services.AddAutoMapper(typeof(Startup));
 
             services.AddControllersWithViews();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,7 +63,6 @@ namespace BlogMVC.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();

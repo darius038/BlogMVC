@@ -6,7 +6,7 @@
 <div class="container pb50">
     <div class="row mt-5">
         <div class="col mt-3">
-    
+    <h4>Create/Edit post</h4>
             <form asp-controller="AdminPanel" asp-action="Edit" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6">
@@ -37,8 +37,12 @@
 
                         <div class="form-group">
                             <label asp-for="Image" class="control-label">Select image</label>
-                            <input asp-for="Image" class="input-group bg-secondary t " />
-                            <input asp-for="CurrentImage" type="hidden" />
+                            <input asp-for="Image" class="input-group" />
+                            <hr />
+                            <label class="control-label">Curent image</label>
+                            <p>@Model.CurrentImage</p>
+                            <input class="input-group" asp-for="CurrentImage" type="hidden" />
+                            <hr />
                         </div>
                     </div>
                 </div>

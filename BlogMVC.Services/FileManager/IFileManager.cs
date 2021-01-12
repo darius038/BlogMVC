@@ -11,7 +11,6 @@ namespace BlogMVC.Repository.FileManager
     public interface IFileManager
     {
         FileStream ImageStream(string image);
-        Task<string> SaveImage(IFormFile image);
-        //bool RemoveImage(string image);
+        Task<string> SaveImage(IFormFile image);       
     }
 }

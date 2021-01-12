@@ -7,12 +7,10 @@
     var base_path = Context.Request.PathBase;
 }
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
 <!-- post article-->
 <div class="container pb50">
     <div class="row">
-        <div class="col-md-12 mb40 mt-5 postimg">
+        <div class="col-md-12 mb40 mt-5">
             <article>
                 <div class="row">
                     @if (!String.IsNullOrEmpty(Model.Image))
@@ -20,8 +18,7 @@
                         var image_path = $"{base_path}/Image/{Model.Image}";
                         <img src="~/content/post/@Model.Image" alt="" class="mb30" />
                     }
-                </div>
-              
+                </div>              
 
                 <div class="post-content">
                     <h3>@Model.Title</h3>
