@@ -7,16 +7,17 @@ using BlogMVC.Web.ViewModels;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using BlogMVC.Repository.LoggerService;
 
 namespace BlogMVC.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILoggerManager _logger;
         private IPostRepository _repository;
         private ICategoryRepository _catrepository;
 
-        public HomeController(ILogger<HomeController> logger, IPostRepository repository, ICategoryRepository catrepository)
+        public HomeController(ILoggerManager logger, IPostRepository repository, ICategoryRepository catrepository)
         {
             _logger = logger;
             _repository = repository;
@@ -85,7 +86,7 @@ namespace BlogMVC.Web.Controllers
 
             _repository.UpdatePost(post);
             await _repository.SaveChangesAsync();
-
+            _logger.LogInfo("HomeController - new comment added");
             return RedirectToAction("Post", new { id = model.PostId });
         }
 

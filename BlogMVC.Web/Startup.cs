@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlogMVC.Repository.FileManager;
+using NLog;
+using System;
+using System.IO;
+using BlogMVC.Repository.LoggerService;
 
 namespace BlogMVC.Web
 {
@@ -16,6 +20,7 @@ namespace BlogMVC.Web
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -26,7 +31,9 @@ namespace BlogMVC.Web
         {
             
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-          
+
+            services.AddSingleton<ILoggerManager, LoggerManager>();
+
             services.AddTransient<IPostRepository, PostRepository>();
 
             services.AddTransient<ICategoryRepository, CategoryRepository>();
@@ -48,7 +55,7 @@ namespace BlogMVC.Web
                 options.LoginPath = "/Account/Login";
             });
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));            
 
             services.AddControllersWithViews();
         }

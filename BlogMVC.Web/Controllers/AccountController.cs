@@ -1,4 +1,5 @@
-﻿using BlogMVC.Web.ViewModels;
+﻿using BlogMVC.Repository.LoggerService;
+using BlogMVC.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,14 +9,17 @@ namespace BlogMVC.Web.Controllers
     public class AccountController : Controller
     {
         private SignInManager<IdentityUser> _signInManager;
-        private UserManager<IdentityUser> _userManager;       
+        private UserManager<IdentityUser> _userManager;
+        private readonly ILoggerManager _logger;
 
         public AccountController(
             SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            ILoggerManager logger)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _logger = logger;
         }
 
         //GET: Login
@@ -48,9 +52,11 @@ namespace BlogMVC.Web.Controllers
 
             if (isAdmin)
             {
+                _logger.LogInfo("Admin signed in");
                 return RedirectToAction("Index", "AdminPanel");
             }
 
+            _logger.LogInfo("User signed in");
             return RedirectToAction("Index", "Home");
         }
 
@@ -81,6 +87,7 @@ namespace BlogMVC.Web.Controllers
 
             if (result.Succeeded)
             {
+                _logger.LogInfo("New user registered");
                 //await _signInManager.SignInAsync(user, false);
                 return RedirectToAction("Login", "Account");
             }
