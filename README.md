@@ -1,9 +1,7 @@
 # Personal Blog Webapp
-> Custom Blog webapp with simple CMS
+> Light and simple Blog webapp with simple CMS.
 
-Light and simple Blog webapp.
-
-![F1](../../../../../../cs/KITM/BlogMVC/f1.png)
+![F1](https://github.com/darius038/BlogMVC/blob/master/f1.png)
 
 ## Goals
 * An easy way to create a simple, secure website with a blog
@@ -41,23 +39,23 @@ For posts comenting, you must be signed in to your account (as Admin or simple u
 ## Some printscreens
 > Posts ordering by categorie
 
-![F1](../../../../../../cs/KITM/BlogMVC/f2.png)
+![F1](https://github.com/darius038/BlogMVC/blob/master/f2.png)
 > Admin panel
 
-![F1](../../../../../../cs/KITM/BlogMVC/f3.png)
+![F1](https://github.com/darius038/BlogMVC/blob/master/f3.png)
 > Post editor panel
 
-![F1](../../../../../../cs/KITM/BlogMVC/f4.png)
+![F1](https://github.com/darius038/BlogMVC/blob/master/f4.png)
 > Post categorie management
 
-![F1](../../../../../../cs/KITM/BlogMVC/f5.png)
+![F1](https://github.com/darius038/BlogMVC/blob/master/f5.png)
 > Dynamic images upload, and solution structure
 
-![F1](../../../../../../cs/KITM/BlogMVC/f6.png)
+![F1](https://github.com/darius038/BlogMVC/blob/master/f6.png)
 
 
 ## Meta
-KITM .net student
+learning to code,
 Darius
 [https://github.com/darius038](https://github.com/darius038)
 
