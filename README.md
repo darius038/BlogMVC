@@ -55,7 +55,7 @@ For posts comenting, you must be signed in to your account (as Admin or simple u
 
 
 ## Meta
-learning to code,
+just learning to code,
 Darius
 [https://github.com/darius038](https://github.com/darius038)
 
